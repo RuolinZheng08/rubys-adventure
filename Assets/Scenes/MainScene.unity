@@ -10904,6 +10904,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 685227381629598913, guid: 757f93eaccce6431dac554d56c1520bc, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1461620966553548403, guid: 757f93eaccce6431dac554d56c1520bc, type: 3}
       propertyPath: m_Name
       value: Bot

@@ -5,15 +5,17 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     Rigidbody2D enemyRb;
+    Animator animator;
+    public ParticleSystem smokeEffect;
+
     [SerializeField] float speed = 3.0f;
     [SerializeField] float changeDirectionTime = 2.0f;
+
     float timer = 0;
     bool vertical = true;
     int direction = 1;
 
     bool broken = true;
-
-    Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -66,5 +68,6 @@ public class EnemyController : MonoBehaviour
         broken = false;
         enemyRb.simulated = false;
         animator.SetTrigger("Fixed");
+        smokeEffect.Stop();
     }
 }
