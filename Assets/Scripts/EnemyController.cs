@@ -8,8 +8,8 @@ public class EnemyController : MonoBehaviour
     Animator animator;
     public ParticleSystem smokeEffect;
 
-    [SerializeField] float speed = 3.0f;
-    [SerializeField] float changeDirectionTime = 2.0f;
+    [SerializeField] float speed = 2.0f;
+    [SerializeField] float changeDirectionTime = 1.0f;
 
     float timer = 0;
     bool vertical = true;

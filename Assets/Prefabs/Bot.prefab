@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smokeEffect: {fileID: 685227381629598913}
-  speed: 3
-  changeDirectionTime: 3
+  speed: 2
+  changeDirectionTime: 1
 --- !u!95 &7345888253845001138
 Animator:
   serializedVersion: 3
