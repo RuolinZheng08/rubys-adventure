@@ -5,9 +5,9 @@ using UnityEngine;
 public class HealthCollectible : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other) {
-        PlayerController controller = other.GetComponent<PlayerController>();
-        if (controller != null && controller.health < controller.maxHealth) {
-            controller.ChangeHealth(1);
+        PlayerController player = other.GetComponent<PlayerController>();
+        if (player != null && player.health < player.maxHealth) {
+            player.ChangeHealth(1);
             Destroy(gameObject);
         }
     }

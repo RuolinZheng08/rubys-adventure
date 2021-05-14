@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     public int health { get { return currentHealth; } }
     int currentHealth;
 
+    // invincible
+    [SerializeField] float timeInvincible = 2.0f;
+    bool isInvincible;
+    float invincibleTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,13 @@ public class PlayerController : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
+
+        if (isInvincible) {
+            invincibleTimer -= Time.deltaTime;
+            if (invincibleTimer < 0) {
+                isInvincible = false;
+            }
+        }
     }
 
     void FixedUpdate() {
@@ -37,6 +49,13 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ChangeHealth(int amount) {
+        if (amount < 0) {
+            if (isInvincible) {
+                return;
+            }
+            isInvincible = true;
+            invincibleTimer = timeInvincible;
+        }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
 }
