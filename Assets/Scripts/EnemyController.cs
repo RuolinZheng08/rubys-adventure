@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        PlayerController player = other.GetComponent<PlayerController>();
+        PlayerController player = other.collider.GetComponent<PlayerController>();
         if (player != null) {
             player.ChangeHealth(-1);
         }
