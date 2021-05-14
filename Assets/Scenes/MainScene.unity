@@ -3198,8 +3198,8 @@ Tilemap:
   - first: {x: -3, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileIndex: 26
+      m_TileSpriteIndex: 26
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -11109,7 +11109,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 75d3aa3bb4f9a45b7b01cc88a494b89f, type: 2}
   - m_RefCount: 38
     m_Data: {fileID: 11400000, guid: c29ecdf6a2f2040899369001e09066bc, type: 2}
-  - m_RefCount: 9
+  - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 96724b00223d7449a8e7ea9e3e66b407, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 9205342baa49d498994f051f17bdd2ef, type: 2}
@@ -11149,6 +11149,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 6036829966fd0473d84bafe4c6ae2f54, type: 2}
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: c8336cb6e8ff34c428a4ab76491649bd, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1e3255b54d8d141fbad1b381c5fca501, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 751
     m_Data: {fileID: -7383445712326616866, guid: df0b6f9e93b65bc4792e6cf7849c5e37, type: 3}
@@ -11162,7 +11164,7 @@ Tilemap:
     m_Data: {fileID: -8216298994678088486, guid: ae39c96545143eb41b1618200a550c81, type: 3}
   - m_RefCount: 38
     m_Data: {fileID: 4339591326582698190, guid: ae39c96545143eb41b1618200a550c81, type: 3}
-  - m_RefCount: 9
+  - m_RefCount: 8
     m_Data: {fileID: -5211558198385893417, guid: ae39c96545143eb41b1618200a550c81, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -1160634482217872146, guid: ae39c96545143eb41b1618200a550c81, type: 3}
@@ -11202,6 +11204,8 @@ Tilemap:
     m_Data: {fileID: -4424398015954306478, guid: 56dfe645f43c419458abb426118088e5, type: 3}
   - m_RefCount: 20
     m_Data: {fileID: -8663255737845229561, guid: 56dfe645f43c419458abb426118088e5, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 2125751058962784675, guid: 2e6ecdf01ba70e3489b17b3f6525fec2, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 990
     m_Data:
@@ -11772,7 +11776,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1295854966, guid: facb3348a93814f769ae9b56529b63f6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5874772695639463641, guid: facb3348a93814f769ae9b56529b63f6, type: 3}
       propertyPath: m_IsActive
