@@ -6,23 +6,26 @@ public class EnemyController : MonoBehaviour
 {
     Rigidbody2D enemyRb;
     [SerializeField] float speed = 3.0f;
-    [SerializeField] float changeDirectionTime = 3.0f;
+    [SerializeField] float changeDirectionTime = 2.0f;
+    float timer = 0;
     bool vertical = true;
-    float timer;
     int direction = 1;
+
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update() {
         timer -= Time.deltaTime;
         if (timer < 0) { // time to change direction
-            vertical = !vertical;
-            direction = -direction;
+            vertical = (Random.value < 0.5);
+            direction = (Random.value < 0.5 ? 1 : -1);
             timer = changeDirectionTime;
         }
     }
@@ -31,8 +34,12 @@ public class EnemyController : MonoBehaviour
     {
         Vector2 position = enemyRb.position;
         if (vertical) {
+            animator.SetFloat("MoveX", 0);
+            animator.SetFloat("MoveY", direction);
             position.y += speed * direction * Time.deltaTime;
         } else {
+            animator.SetFloat("MoveX", direction);
+            animator.SetFloat("MoveY", 0);
             position.x += speed * direction * Time.deltaTime;
         }
         enemyRb.MovePosition(position);
