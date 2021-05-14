@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour
     bool vertical = true;
     int direction = 1;
 
+    bool broken = true;
+
     Animator animator;
 
     // Start is called before the first frame update
@@ -22,6 +24,10 @@ public class EnemyController : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (!broken) {
+            return;
+        }
+
         timer -= Time.deltaTime;
         if (timer < 0) { // time to change direction
             vertical = (Random.value < 0.5);
@@ -32,6 +38,10 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!broken) {
+            return;
+        }
+
         Vector2 position = enemyRb.position;
         if (vertical) {
             animator.SetFloat("MoveX", 0);
@@ -50,5 +60,11 @@ public class EnemyController : MonoBehaviour
         if (player != null) {
             player.ChangeHealth(-1);
         }
+    }
+
+    public void FixBroken() {
+        broken = false;
+        enemyRb.simulated = false;
+        animator.SetTrigger("Fixed");
     }
 }

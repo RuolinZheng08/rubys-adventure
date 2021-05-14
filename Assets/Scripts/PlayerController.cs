@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     bool isInvincible;
     float invincibleTimer;
 
+    // projectile
+    public GameObject projectilePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +55,10 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Look X", lookDirection.x);
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
+
+        if (Input.GetKeyDown(KeyCode.C)) {
+            LaunchProjectile();
+        }
     }
 
     void FixedUpdate() {
@@ -59,6 +66,15 @@ public class PlayerController : MonoBehaviour
         position.x += speed * horizontal * Time.deltaTime;
         position.y += speed * vertical * Time.deltaTime;
         playerRb.MovePosition(position);
+    }
+
+    void LaunchProjectile() {
+        // position of player's head
+        Vector2 launchPosition = playerRb.position + Vector2.up * 0.5f;
+        GameObject projectileObject = Instantiate(projectilePrefab, launchPosition, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 300);
+        animator.SetTrigger("Launch");
     }
 
     public void ChangeHealth(int amount) {
