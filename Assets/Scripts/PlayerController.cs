@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     //movement
     Rigidbody2D playerRb;
+    Animator animator;
+    Vector2 lookDirection = new Vector2(1, 0);
     float horizontal;
     float vertical;
     [SerializeField] float speed = 3.0f;
@@ -24,6 +26,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         currentHealth = maxHealth;
     }
 
@@ -39,6 +42,16 @@ public class PlayerController : MonoBehaviour
                 isInvincible = false;
             }
         }
+
+        Vector2 move = new Vector2(horizontal, vertical);
+        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f)) {
+            lookDirection.Set(move.x, move.y);
+            lookDirection.Normalize();
+        }
+
+        animator.SetFloat("Look X", lookDirection.x);
+        animator.SetFloat("Look Y", lookDirection.y);
+        animator.SetFloat("Speed", move.magnitude);
     }
 
     void FixedUpdate() {
@@ -55,6 +68,7 @@ public class PlayerController : MonoBehaviour
             }
             isInvincible = true;
             invincibleTimer = timeInvincible;
+            animator.SetTrigger("Hit");
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
     }
