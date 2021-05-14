@@ -59,6 +59,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C)) {
             LaunchProjectile();
         }
+        if (Input.GetKeyDown(KeyCode.X)) {
+            // position of the center of the player sprite
+            Vector2 waistPosition = playerRb.position + Vector2.up * 0.2f;
+            RaycastHit2D hit = Physics2D.Raycast(waistPosition, lookDirection, 1.5f, LayerMask.GetMask("NPC"));
+            if (hit.collider != null) { // hits NPC
+                NonPlayableCharacter npc = hit.collider.GetComponent<NonPlayableCharacter>();
+                if (npc != null) {
+                    npc.DisplayDialog();
+                }
+            }
+        }
     }
 
     void FixedUpdate() {
