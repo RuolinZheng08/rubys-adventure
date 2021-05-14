@@ -25,11 +25,16 @@ public class PlayerController : MonoBehaviour
     // projectile
     public GameObject projectilePrefab;
 
+    // audio
+    AudioSource audioSource;
+    public AudioClip projectileClip;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         currentHealth = maxHealth;
     }
 
@@ -86,6 +91,7 @@ public class PlayerController : MonoBehaviour
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, 300);
         animator.SetTrigger("Launch");
+        audioSource.PlayOneShot(projectileClip);
     }
 
     public void ChangeHealth(int amount) {
@@ -99,5 +105,9 @@ public class PlayerController : MonoBehaviour
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHealthBar.instance.SetValue(currentHealth / (float) maxHealth);
+    }
+
+    public void PlaySound(AudioClip clip) {
+        audioSource.PlayOneShot(clip);
     }
 }
